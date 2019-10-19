@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+$primary: rgb(0, 123, 255);
+
+.links {
+  padding: 1em;
+  &:hover {
+    background-color: darken($primary, 10%);
+  }
+}
+
+.clickablespan {
+  font-weight: "bold";
+  background: lightgray;
+  padding: 0.3em 0.8em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.play-container {
+  padding: 3em;
+  border: 1px solid lightgray;
+  margin-bottom: 1em;
+
+  input {
+    padding: 1em;
+    margin-bottom: 2em;
+  }
+}
