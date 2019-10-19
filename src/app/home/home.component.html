@@ -13,3 +13,20 @@
   <br />
   <strong>You said:</strong> {{ name }}
 </div>
+
+<div
+  class="play-container red"
+  [ngStyle]="{
+    'border-color': clickCounter > 5 ? 'gray' : '',
+    'background-color': clickCounter > 5 ? 'lightgray' : ''
+  }"
+  [ngClass]="{ color: clickCounter > 5, colortwo: clickCounter > 10 }"
+>
+  <ng-template [ngIf]="clickCounter > 5" [ngIfElse]="none">
+    <h1>it is greater than 5</h1>
+  </ng-template>
+
+  <ng-template #none>
+    <h1>it is less than 5</h1>
+  </ng-template>
+</div>
