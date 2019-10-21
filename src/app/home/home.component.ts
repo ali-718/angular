@@ -14,5 +14,9 @@ export class HomeComponent implements OnInit {
     this.clickCounter += 1;
   }
 
+  disabled = false;
+
+  myId = "testID";
+
   ngOnInit() {}
 }
