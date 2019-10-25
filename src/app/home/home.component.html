@@ -3,13 +3,19 @@
 <div class="play-container">
   <p>
     you have clicked
-    <span (click)="counterClick()" class="clickablespan">this</span>
+    <span (click)="counterClick($event)" class="clickablespan">this</span>
     {{ clickCounter }} times
+  </p>
+  <p>
+    you have clicked
+    <span (click)="greeting = 'Ali Haider'" class="clickablespan">this</span>
+    {{ greeting }}
   </p>
 </div>
 
 <div class="play-container">
   <input type="text" [(ngModel)]="name" />
+  <input type="text" #myInput />
   <br />
   <strong>You said:</strong> {{ name }}
 </div>
@@ -21,15 +27,44 @@
     'background-color': clickCounter > 5 ? 'lightgray' : ''
   }"
   [ngClass]="{ color: clickCounter > 5, colortwo: clickCounter > 10 }"
+></div>
+
+<span [ngSwitch]="clickCounter">
+  <p *ngSwitchCase="5">
+    it is greater than 5
+  </p>
+  <p *ngSwitchCase="10">
+    it is greater than 10
+  </p>
+  <p *ngSwitchDefault>
+    it is less than 5
+  </p>
+</span>
+
+<div
+  *ngFor="
+    let item of names;
+    index as i;
+    first as f;
+    last as l;
+    odd as o;
+    even as e
+  "
 >
-  <ng-template [ngIf]="clickCounter > 5" [ngIfElse]="none">
+  <h1>{{ i }} {{ item }} {{ f }} {{ l }} {{ o }} {{ e }}</h1>
+</div>
+
+<!-- <ng-template *ngSwitch="clickCounter">
+  <ng-template *ngSwitchCase="5">
     <h1>it is greater than 5</h1>
   </ng-template>
 
-  <ng-template #none>
-    <h1>it is less than 5</h1>
+  <ng-template *ngSwitchCase="10">
+    <h1>it is less than 10</h1>
   </ng-template>
-</div>
+</ng-template> -->
 
 <input value="ali haider" [id]="myId" />
 <input [disabled]="disabled" value="ali haider" id="{{ myId }}" />
+
+<app-list [name]="name"></app-list>
